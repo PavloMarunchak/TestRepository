@@ -1,0 +1,16 @@
+{
+	"id": "910ef979-3e4a-6599-ff57-fd4ac63bbffa",
+	"name": "Second",
+	"values": [
+		{
+			"key": "url",
+			"value": "dump.getpostman.com",
+			"type": "text",
+			"name": "url",
+			"enabled": true
+		}
+	],
+	"timestamp": 1415884521348,
+	"synced": false,
+	"syncedFilename": ""
+}

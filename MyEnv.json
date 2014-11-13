@@ -1,0 +1,37 @@
+﻿{
+	"id": "12ce4511-e7af-6590-ac29-b6daee9a5155",
+	"name": "MyEnv",
+	"values": [
+		{
+			"key": "url",
+			"value": "dump.getpostman.com",
+			"type": "text",
+			"name": "url",
+			"enabled": true
+		},
+		{
+			"key": "user_id",
+			"value": "1055",
+			"type": "text",
+			"name": "user_id",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "WzSquFjflNuLcBDBeYrsoSSCGFRvTO",
+			"type": "text",
+			"name": "token",
+			"enabled": true
+		},
+		{
+			"key": "post_id",
+			"value": "346",
+			"type": "text",
+			"name": "post_id",
+			"enabled": true
+		}
+	],
+	"timestamp": 1415884410954,
+	"synced": false,
+	"syncedFilename": ""
+}
