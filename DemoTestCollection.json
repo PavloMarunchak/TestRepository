@@ -1,0 +1,101 @@
+{
+	"id": "f234349f-4cc7-5713-589b-a8024f76048e",
+	"name": "TestCollection",
+	"description": "Works with REST services",
+	"order": [],
+	"folders": [
+		{
+			"id": "ac763943-7779-e3d0-231f-2744c68ff021",
+			"name": "Demo",
+			"description": "Folder for demo tests",
+			"order": [
+				"f0df4428-2e51-16b2-045c-3130f46739bd",
+				"54454a76-0835-e3d8-3f21-52085ea2e041",
+				"13e935fc-5e09-2f76-cfee-d86958c2abd9",
+				"682fc6c5-10b1-a17d-e004-2a8aa2c0f69c"
+			],
+			"collection_name": "TestCollection",
+			"collection_id": "f234349f-4cc7-5713-589b-a8024f76048e"
+		}
+	],
+	"timestamp": 1415878850759,
+	"synced": false,
+	"requests": [
+		{
+			"id": "13e935fc-5e09-2f76-cfee-d86958c2abd9",
+			"headers": "Content-Type: application/json\n",
+			"url": "{{url}}/blog/posts?user_id={{user_id}}&token={{token}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\n\nif (data.post_id) {\n  tests[\"Post_id was found\"] = true; \n  postman.setEnvironmentVariable(\"post_id\", data.post_id);\n}\nelse {\n  tests[\"Post_id was not found\"] = false;\n}",
+			"time": 1415880149131,
+			"name": "Create new post",
+			"description": "",
+			"collectionId": "f234349f-4cc7-5713-589b-a8024f76048e",
+			"responses": [],
+			"synced": false,
+			"rawModeData": "{\n  \"post\": \"This is my first post in this resource\"\n}"
+		},
+		{
+			"id": "54454a76-0835-e3d8-3f21-52085ea2e041",
+			"headers": "Content-Type: application/json\n",
+			"url": "{{url}}/blog/users/tokens/",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Set tokens to envirounment",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1415879534827,
+			"version": 2,
+			"responses": [],
+			"tests": "var data = JSON.parse(responseBody);\n\nif (data.token) {\n  tests[\"Body has token\"] = true; \n  postman.setEnvironmentVariable(\"user_id\", data.user_id);\n  postman.setEnvironmentVariable(\"token\", data.token);\n}\nelse {\n  tests[\"Body has token\"] = false;\n}",
+			"collectionId": "f234349f-4cc7-5713-589b-a8024f76048e",
+			"synced": false,
+			"rawModeData": "{\n  \"username\": \"TestUser\",\n  \"password\": \"12345\"\n}"
+		},
+		{
+			"id": "682fc6c5-10b1-a17d-e004-2a8aa2c0f69c",
+			"headers": "Content-Type: application/json\n",
+			"url": "{{url}}/blog/posts/{{post_id}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var schema = {\n\"type\": \"object\",\n\"properties\": {\n\"content\": \"string\",\n\"created_at\": \"integer\",\n\"id\": \"integer\"\n},\n\"required\": [\"content\", \"created_at\", \"id\"]\n};\n\nvar data = JSON.parse(responseBody);\n\nvar result = tv4.validateResult(data, schema);\n\ntests[\"Valid schema\"] = result.valid;",
+			"time": 1415880437037,
+			"name": "Check new post exist and valid",
+			"description": "",
+			"collectionId": "f234349f-4cc7-5713-589b-a8024f76048e",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "f0df4428-2e51-16b2-045c-3130f46739bd",
+			"headers": "Content-Type: application/json\n",
+			"url": "{{url}}/blog/users/",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 201;",
+			"time": 1416229247161,
+			"name": "Create new user",
+			"description": "",
+			"collectionId": "f234349f-4cc7-5713-589b-a8024f76048e",
+			"responses": [],
+			"synced": false,
+			"rawModeData": "{\n  \"username\": \"TestUser\",\n  \"password\": \"12345\"\n}"
+		}
+	]
+}
